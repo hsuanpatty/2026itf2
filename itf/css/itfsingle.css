@@ -1568,6 +1568,12 @@ nav {
   padding: 0 10px;
 }
 
+@media (min-width: 1500px) {
+  .merged-offer-filters {
+    padding: 0 15px;
+  }
+}
+
 
 /* ========================================
    優惠篩選
@@ -2465,6 +2471,10 @@ nav {
   .nav-column ul li a {
     font: 16px / 1.5 "Noto Sans TC", 微軟正黑體, sans-serif;
     font-weight: 700;
+  }
+
+  .offer-filter small {
+    letter-spacing: 0.02rem;
   }
 }
 
