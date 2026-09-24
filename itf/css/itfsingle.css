@@ -1,0 +1,4043 @@
+@charset "UTF-8";
+
+/* ========================================
+   1. 基礎設定與變數 (Reset & Variables)
+======================================== */
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "openhuninn";
+  src: url("../fonts/jf-openhuninn-2.0.ttf") format("truetype");
+}
+
+:root {
+  --pinkishgray: #c1686d;
+  --pinkishgray2: #e6a0a1;
+  --pinkishgray3: #f87b8d;
+  --pinkishgray4: #ef95b1;
+  --pinkishgray5: #d61d5b;
+  --pinkishgray6: #f96491;
+  --irongray: #3c3e3d;
+  --irongray2: #282828;
+  --purple: #7745ce;
+  --purple2: #a346cb;
+  --pink: #fdeef5;
+  --pink2: #f4737c;
+  --red: #9a0012;
+  --red2: #d64756;
+  --gray: #545454;
+  --gray2: #666666;
+  --white: #fff;
+  --yellow: #f8ee91;
+  --bluw: #637dce;
+  --border-color: #ebebeb;
+  --secondary-light-color: #777777;
+  --orange: #ff6a00;
+  --orange2: #fb6305;
+  --brown: #dd8006;
+  --blue: #44c3c9;
+  --blue2: #25a3eb;
+  --blue3: #d9e3ed;
+  --blue4: #047bb3;
+  --blue5: #7cc6df;
+
+  /* 高對比與亮眼優惠色彩變數 */
+  --promo-red: #ff3366;
+  --promo-red-dark: #d9043d;
+  --promo-orange: #ff6b00;
+  --promo-gold: #ffb703;
+  --promo-bg-light: #fff0f3;
+  --btn-shadow-blue: rgba(37, 163, 235, 0.35);
+  --btn-shadow-orange: rgba(255, 107, 0, 0.4);
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+p,
+li,
+section,
+header,
+footer {
+  font-family: 微軟正黑體, 黑體, sans-serif;
+  letter-spacing: 0.8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+/* ========================================
+   2. 通用與佈局類別 (Layout & Utilities)
+======================================== */
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+
+.text-start { text-align: left !important; }
+.text-end { text-align: right !important; }
+.text-center { text-align: center !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-none { display: none !important; }
+.py-80 { padding-top: 80px !important; }
+.py-100 { padding-top: 100px !important; padding-bottom: 100px !important; }
+.m-auto { margin: auto !important; }
+.pr-5 { padding-right: 5px !important; }
+
+h2 {
+  font-weight: 600;
+  color: #cf9f42;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* GoTop 按鈕美化 */
+#goTop {
+  background-image: url(../images/top.png);
+  display: none;
+  position: fixed;
+  width: 52px;
+  height: 52px;
+  bottom: 25px;
+  right: 30px;
+  font-weight: 600;
+  line-height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#goTop:hover {
+  opacity: 1;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 22px rgba(37, 163, 235, 0.4);
+}
+
+/* ========================================
+   3. 導覽列與 Banner (Navigation & Banner)
+======================================== */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(15 63 137);
+  text-align: center;
+  z-index: 9999;
+  box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 20px;
+  box-sizing: border-box;
+}
+
+.logo-w {
+  width: 60%;
+  display: flex;
+}
+
+.banner {
+  position: relative;
+  margin-top: 50px;
+}
+
+.banner .banner-w {
+  width: 100%;
+  display: block;
+}
+
+.itf-slide-caption {
+  position: absolute;
+  top: 38%;
+  left: 1%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 83%;
+}
+
+.menu-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  padding: 7px;
+  margin: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 27px;
+  height: 3px;
+  margin: 5px auto;
+  background: var(--white);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* ========================================
+   4. 旅展與分類區塊 (ITF & Categories)
+======================================== */
+
+.box-category {
+  background-color: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(37, 163, 235, 0.08);
+  border: 1px solid #dcecf5;
+  min-height: 550px;
+}
+
+.box-category > h3.toggled {
+  background: linear-gradient(
+    135deg,
+    #25a3eb 0%,
+    #1769aa 65%,
+    #6f5ac7 100%
+  );
+  color: var(--white);
+  padding: 16px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  text-transform: none;
+}
+
+.category-content #select-category.list-lg {
+  padding: 16px 0;
+  margin: 0;
+  background: var(--white);
+}
+
+.category-content #select-category.list-lg li {
+  border-bottom: 1px dashed #dcecf5;
+  margin: 0;
+}
+
+.category-content #select-category.list-lg .list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--irongray2, #42677d);
+  transition: all 0.25s ease;
+  border: none;
+  background: transparent;
+}
+
+.category-content #select-category.list-lg .list-group-item:hover {
+  color: #1769aa;
+  padding-left: 22px;
+  background: #f0f8fd;
+  border-radius: 8px;
+}
+
+.category-content #select-category .list-group-item.active,
+.category-content #select-category li.active .list-group-item {
+  background: linear-gradient(90deg, #eef8fd 0%, #f5f2fc 100%);
+  color: #1769aa;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.category-content #select-category .list-group-item.active::before,
+.category-content #select-category li.active .list-group-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 4px;
+  background: linear-gradient(180deg, #25a3eb, #7b61c9);
+  border-radius: 0 4px 4px 0;
+}
+
+.category-content #select-category .list-group-item.active span i,
+.category-content #select-category li.active .list-group-item i,
+.category-content #select-category .list-group-item.active .arrow-icon {
+  color: #7b61c9;
+}
+
+.category-content .list-md {
+  padding: 12px 16px;
+  margin: 0;
+  background: var(--white);
+}
+
+.category-content .list-md .main-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1769aa;
+  background: #eef8fd;
+  border: 1px solid #d7edf8;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.category-content .list-md .main-item:hover {
+  background: linear-gradient(90deg, #25a3eb, #6f5ac7);
+  color: #ffffff;
+}
+
+.category-content .list-md .child-categories {
+  padding: 6px 0 6px 12px;
+  margin-top: 6px;
+  background: transparent;
+  border-left: 2px solid #c9bfee;
+}
+
+.category-content .list-md .child-categories li a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--secondary-light-color, #667d8c);
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.category-content .list-md .child-categories li a:hover {
+  color: #6f56bd;
+  background: #f4f1fc;
+  padding-left: 14px;
+}
+
+
+/* ========================================
+   側邊欄與區塊
+======================================== */
+
+.column-py {
+  padding: 50px;
+}
+
+.itf-title {
+  width: 45%;
+}
+
+.itf-box-col3,
+.itf-box-col9 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+#column-left > div,
+#column-right > div {
+  float: unset;
+  margin: 0 0 30px;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  background: var(--background-color);
+}
+
+#column-left h3,
+#column-right h3 {
+  display: block;
+  margin: 0;
+  padding: 12px 20px;
+  font: 20px 微軟正黑體, 黑體, sans-serif;
+  letter-spacing: 0.05rem;
+  text-transform: capitalize;
+  position: relative;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(135deg, #25a3eb, #1769aa);
+  color: var(--white);
+  border: none;
+  text-align: center;
+}
+
+.filter_box,
+#column-left .block_box,
+#column-right .block_box,
+.account-content .list-unstyled,
+.sidebar .list-unstyled {
+  padding: 20px;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.category-content .has-more-category .toggled {
+  position: absolute;
+  right: 0;
+}
+
+.child-categories {
+  display: none;
+  padding: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #212529;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid rgba(37, 163, 235, 0.12);
+}
+
+.toggled .toggle-open {
+  position: absolute;
+  right: 15px;
+}
+
+.discount-group {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  padding: 30px 0 40px;
+}
+
+.itf-bg {
+  width: 100%;
+  background-image: url(../images/bg-icon.png);
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-color: rgb(243, 249, 254);
+}
+
+.itf-bg-2 {
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.promo-item {
+  padding-top: 36px;
+}
+
+.service {
+  text-align: center;
+  border: 2px solid #dceaf5;
+  padding: 0 5px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service .service-icon {
+  height: 72px;
+  width: 72px;
+  line-height: 72px;
+  background: #ffffff;
+  color: #7b61c9;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  border-radius: 50%;
+  margin: -36px auto 17px;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 13px 0 rgba(123, 97, 201, 0.18);
+}
+
+.service-content h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1769aa;
+  text-transform: uppercase;
+}
+
+.service-content span {
+  margin-top: 5px;
+  display: block;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.service:hover {
+  border-color: #7b61c9;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(123, 97, 201, 0.2);
+}
+
+.service:hover .service-icon {
+  color: #ffffff;
+  background: linear-gradient(135deg, #25a3eb, #7b61c9);
+}
+
+.service:hover .service-icon:before {
+  transform: rotateY(360deg);
+}
+
+.itf-group {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  padding: 30px 0 50px;
+}
+
+
+/* ========================================
+   ITF 卡片
+======================================== */
+
+.itf-card {
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(37, 163, 235, 0.1);
+  text-align: left;
+  overflow: hidden;
+  border: 1px solid #dcecf5;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.itf-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 14px 28px rgba(37, 163, 235, 0.18),
+    0 8px 20px rgba(255, 107, 0, 0.12);
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
+.itf-label {
+  position: absolute;
+  display: inline-block;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    var(--promo-red) 0%,
+    var(--promo-orange) 100%
+  );
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 18px;
+  font-weight: 900;
+  top: 12px;
+  right: 12px;
+  box-shadow: 0 4px 12px rgba(255, 51, 102, 0.4);
+  letter-spacing: 0.5px;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 51, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+  }
+}
+
+.itf-info {
+  padding: 15px;
+}
+
+.itf-info h2 {
+  font-size: 22px;
+  color: #2b3036;
+  margin: 0 0 10px;
+  font-weight: 900;
+}
+
+.itf-info h3 {
+  font-size: 20px;
+  color: var(--promo-red);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.tags {
+  margin: 12px 0;
+}
+
+.tag {
+  cursor: pointer;
+  display: inline-block;
+  background: #fff4f6;
+  color: var(--promo-red-dark);
+  border: 1px solid #ffccd5;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-right: 6px;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background: var(--promo-red);
+  color: var(--white);
+  border-color: var(--promo-red);
+  transform: translateY(-1px);
+}
+
+.order-button {
+  background: linear-gradient(
+    135deg,
+    var(--promo-orange) 0%,
+    var(--promo-red) 100%
+  );
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px var(--btn-shadow-orange);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.order-button:hover {
+  background: linear-gradient(
+    135deg,
+    #ff7a1a 0%,
+    #ff1a53 100%
+  );
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.45);
+}
+
+.order-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.favorite-star {
+  cursor: pointer;
+  color: #a0aec0;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.favorite-star.active,
+.favorite-star:hover {
+  color: var(--promo-red);
+  transform: scale(1.2);
+}
+
+.timestamp i {
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+
+/* ========================================
+   導覽選單與分類膠囊按鈕
+======================================== */
+
+.nav-column {
+  margin-left: 0;
+}
+
+.nav-column ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-column ul li {
+  margin: 0;
+  list-style: none;
+  display: inline-block;
+}
+
+.nav-column ul li a {
+  font: 15px/1.5 "Noto Sans TC", 微軟正黑體, sans-serif;
+  font-weight: 700;
+  background: #ffffff;
+  color: #2b569a;
+  border: 1.5px solid #d0e1fd;
+  padding: 8px 20px;
+  border-radius: 25px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-column ul li a:hover {
+  background: linear-gradient(
+    135deg,
+    #3382e2 0%,
+    #1d61c0 100%
+  );
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--btn-shadow-blue);
+}
+
+.nav-column ul li a:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px var(--btn-shadow-blue);
+}
+
+.itf-box-px {
+  padding: 0 0 0 30px;
+}
+
+.column-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.column-title h1 {
+  font: 36px 微軟正黑體, 黑體, sans-serif;
+  font-weight: 900;
+  color: #2f3438;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.itf-box-bg {
+  background-color: #ffffff;
+  padding: 24px;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(37, 163, 235, 0.06);
+}
+
+.label-area p {
+  padding: 6px 18px;
+  background: linear-gradient(
+    90deg,
+    #e3f2fd 0%,
+    #e3f2fd 100%
+  );
+  display: block;
+  font: 800 20px 微軟正黑體, 黑體, sans-serif;
+  border-radius: 8px;
+  color: #1565c0;
+  margin: 14px 0;
+  border-left: 5px solid #1976d2;
+}
+
+
+/* ========================================
+   行程卡片
+======================================== */
+
+.chosen-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.chosen-box li {
+  list-style-type: none;
+  display: block;
+  position: relative;
+  line-height: normal;
+  padding: 20px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  background-image:
+    linear-gradient(
+      to right,
+      #cbdff0 8px,
+      transparent 8px
+    );
+
+  background-size: 15px 1px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
+
+.chosen-box li:last-child {
+  background-image: none;
+}
+
+.chosen-box li:hover {
+  transform: translateY(-2px);
+}
+
+.chosen-box li > a {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.travel-img {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 169px;
+  margin-right: 20px;
+  border-radius: 12px;
+  background-color: #eef5f9;
+  box-shadow: 0 4px 12px rgba(50, 105, 140, 0.12);
+  overflow: hidden;
+}
+
+.travel-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.chosen-box li:hover .travel-img img {
+  transform: scale(1.05);
+}
+
+.travel-content-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+  padding-bottom: 31px;
+}
+
+.travel-box {
+  display: block;
+  width: 100%;
+  padding-right: 0;
+}
+
+.travel-title {
+  display: -webkit-box;
+  width: 100%;
+  font: 18px 微軟正黑體, 黑體, sans-serif;
+  font-weight: 900;
+  color: #39444d;
+  letter-spacing: 0.06rem;
+  line-height: 25px;
+  text-indent: 0;
+  margin: 0 0 8px;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  box-sizing: border-box;
+}
+
+.chosen-box li:hover .travel-title {
+  color: #1565c0;
+}
+
+.tour-brand {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border: 1px solid #f6d365;
+  border-radius: 6px;
+  background: #fffdf0;
+  color: #d97706;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.travel-date,
+.travel-date-xl {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  z-index: 2;
+}
+
+.travel-date h3,
+.travel-date-xl h3 {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 7px 0 0;
+  margin: 0;
+  font: 16px 微軟正黑體, 黑體, sans-serif;
+  color: #39779d;
+  font-weight: 800;
+  white-space: nowrap;
+  letter-spacing: 0.4px;
+}
+
+.travel-date p,
+.travel-date-xl p {
+  font: 16px 微軟正黑體, 黑體, sans-serif;
+  font-weight: 800;
+  color: #687984;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  width: auto;
+  overflow: hidden;
+  margin: 0;
+}
+
+.list-price,
+.list-price-md {
+  position: absolute;
+  right: 0;
+  left: auto;
+  bottom: 0;
+  display: flex;
+  align-items: baseline;
+  flex: 0 0 auto;
+  font: 28px "Noto Sans TC", sans-serif;
+  color: var(--promo-red);
+  font-weight: 900;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  white-space: nowrap;
+  z-index: 3;
+  text-shadow: 0 2px 4px rgba(255, 51, 102, 0.15);
+}
+
+.list-price .list-sign,
+.list-price-md .list-sign {
+  font-size: 17px;
+  font-weight: 900;
+  margin-right: 2px;
+  color: var(--promo-red);
+}
+
+.list-price > .yuan,
+.list-price-md > .yuan {
+  font: 14px "Noto Sans TC", sans-serif;
+  color: #78838a;
+  font-weight: 700;
+  margin-left: 3px;
+}
+
+.discount {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(
+    90deg,
+    #fff0f3 0%,
+    #fff0f3 100%
+  );
+  border: 1.5px solid #ffccd5;
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(255, 51, 102, 0.08);
+}
+
+.discount h4 {
+  font: 900 16px 微軟正黑體, 黑體, sans-serif;
+  color: var(--promo-red-dark);
+  margin: 0;
+  text-indent: 0;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 105px;
+  letter-spacing: 0.06rem;
+  box-sizing: border-box;
+}
+
+.list-price-sm {
+  display: none;
+}
+
+
+/* 去除重複虛線設定 */
+.label-pt ul li,
+.chosen-box li {
+  background-image:
+    linear-gradient(
+      to right,
+      #d8e4ed 8px,
+      transparent 8px
+    );
+
+  background-size: 15px 1px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
+
+.label-pt ul li:last-child {
+  background-image: none;
+}
+
+
+/* ========================================
+   5. 票券模組 (Tickets)
+======================================== */
+
+.ticket-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px 40px;
+  padding: 30px 15px 20px;
+  box-sizing: border-box;
+}
+
+.ticket {
+  position: relative;
+  width: 330px;
+  height: 245px;
+  flex: 0 1 330px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: visible;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
+}
+
+.ticket:nth-child(1) {
+  background: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #f4f8ff 65%,
+    #e9f1ff 100%
+  );
+  border: 1.5px solid rgba(147, 197, 253, 0.6);
+}
+
+.ticket:nth-child(2) {
+  background: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #fffdf0 65%,
+    #fff9d6 100%
+  );
+  border: 1.5px solid rgba(255, 214, 102, 0.6);
+}
+
+.ticket:nth-child(3) {
+  background: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #faf7ff 65%,
+    #f3edff 100%
+  );
+  border: 1.5px solid rgba(161, 123, 210, 0.4);
+}
+
+.ticket-time {
+  width: 100%;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #60a5fa 0%,
+    #3b82f6 100%
+  );
+  color: #ffffff;
+  border-radius: 18px 18px 0 0;
+  font-family:
+    "Noto Sans TC",
+    "微軟正黑體",
+    Arial,
+    sans-serif;
+  box-sizing: border-box;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  font-weight: 900;
+}
+
+.ticket-time p {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-family:
+    "Noto Sans TC",
+    "微軟正黑體",
+    Arial,
+    sans-serif;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.07rem;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.ticket:nth-child(1) .ticket-time {
+  background: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #1d4ed8 100%
+  );
+}
+
+.ticket:nth-child(1) .ticket-subtitle {
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.ticket:nth-child(1) .ticket-title {
+  background: linear-gradient(
+    135deg,
+    #1e3a8a 0%,
+    #3b82f6 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.ticket:nth-child(2) .ticket-time {
+  background: linear-gradient(
+    135deg,
+    var(--promo-orange) 0%,
+    #d97706 100%
+  );
+}
+
+.ticket:nth-child(2) .ticket-subtitle {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.ticket:nth-child(2) .ticket-title {
+  background: linear-gradient(
+    135deg,
+    #b45309 0%,
+    #d97706 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.ticket:nth-child(3) .ticket-time {
+  background: linear-gradient(
+    135deg,
+    #8b5cf6 0%,
+    #6d28d9 100%
+  );
+}
+
+.ticket:nth-child(3) .ticket-subtitle {
+  color: #5b21b6;
+  font-weight: 700;
+}
+
+.ticket:nth-child(3) .ticket-title {
+  background: linear-gradient(
+    135deg,
+    #5b21b6 0%,
+    #8b5cf6 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.ticket-clock,
+.time-icon {
+  margin-right: 8px;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.time-icon {
+  width: 13%;
+  margin-right: 10px;
+}
+
+.time-icon2 {
+  width: 15%;
+  margin-right: 6px;
+}
+
+.time-icon3 {
+  width: 15%;
+  margin-right: 10px;
+}
+
+.ticket-content {
+  width: 100%;
+  height: calc(100% - 62px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 18px 18px;
+  box-sizing: border-box;
+  padding: 12px 15px;
+  font-weight: 900;
+}
+
+.ticket-subtitle {
+  width: 100%;
+  height: 32px;
+  margin: 0 0 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family:
+    "Noto Sans TC",
+    "微軟正黑體",
+    Arial,
+    sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.04rem;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.ticket-title {
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family:
+    "Noto Sans TC",
+    "微軟正黑體",
+    Arial,
+    sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: 0.05rem;
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+.ticket-price {
+  font-size: 45px;
+  font-weight: 900;
+  position: relative;
+  top: -1px;
+  margin: 0;
+  white-space: nowrap;
+  letter-spacing: 0.02rem;
+  color: var(--promo-red) !important;
+  -webkit-text-fill-color: var(--promo-red) !important;
+  text-shadow: 0 3px 6px rgba(255, 51, 102, 0.25);
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 51px;
+  background-color: #f3f9fe;
+  border-radius: 50%;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.ticket::before {
+  left: -11px;
+  border-right: 2px solid #ffffff;
+}
+
+.ticket::after {
+  right: -11px;
+  border-left: 2px solid #f3f9fe;
+}
+
+.ticket:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+}
+
+.ticket-filter {
+  cursor: pointer;
+  transition:
+    all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ticket-filter.is-active {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ticket-filter:not(.is-active) {
+  opacity: 0.75;
+  filter: grayscale(20%);
+}
+
+.ticket-filter:not(.is-active):hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: translateY(-2px);
+}
+
+.itf-box-bg .tour-filter-hidden,
+.itf-box-bg .session-filter-hidden {
+  display: none;
+}
+
+
+/* ========================================
+   6. 整合 ITF 區域 (Merged ITF Component)
+======================================== */
+
+.merged-itf-container {
+  padding-top: 24px;
+  padding-bottom: 60px;
+}
+
+
+/* ============================================================
+   ★ 國家分類列
+   ★ 桌機：原位置正常顯示
+   ★ 往下滑：固定在 NAV 正下方，滿版、無圓角
+============================================================ */
+
+.merged-country-nav {
+  position: sticky;
+  top: 56px;
+  z-index: 9998;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+
+  width: 100%;
+  margin: 0 auto 30px;
+  padding: 10px 16px;
+
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dcecf5;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15, 63, 137, 0.10);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-sizing: border-box;
+}
+
+/* 國家分類按鈕 */
+.merged-country-nav .country-tab {
+  appearance: none;
+  flex: 0 0 auto;
+
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+
+  border-radius: 25px;
+  padding: 10px 24px;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.merged-country-nav .country-tab:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+/* Active */
+.merged-country-nav .country-tab.active {
+  background: linear-gradient(135deg, #25a3eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border-color: #25a3eb;
+  box-shadow: 0 6px 16px var(--btn-shadow-blue);
+  transform: translateY(-1px);
+}
+
+/*
+ * ★ 真正固定狀態
+ * JS 會在滑到 NAV 下方時加入 .is-fixed
+ * 固定後：100vw、左右滿版、不要圓角
+ */
+@media (min-width: 992px) {
+  .merged-country-nav.is-fixed {
+    position: fixed;
+    top: var(--menu-height, 56px);
+    left: 0;
+    right: 0;
+
+    width: 100vw;
+    max-width: none;
+    margin: 0;
+
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 6px 20px rgba(15, 63, 137, 0.18);
+
+    box-sizing: border-box;
+  }
+
+  .merged-country-nav-spacer {
+    width: 100%;
+    height: 0;
+  }
+}
+
+
+/* ========================================
+   國家內容區
+======================================== */
+
+.merged-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.merged-sidebar {
+  flex: 0 0 240px;
+  width: 240px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 0 0 22px;
+  box-shadow: 0 6px 20px rgba(37, 90, 120, 0.08);
+
+  /*
+   * 左側優惠篩選不要壓過國家分類列
+   */
+  position: sticky;
+  top: 130px;
+
+  z-index: 3;
+
+  border: 1px solid #e2e8f0;
+}
+
+.merged-sidebar h3 {
+  font-size: 20px;
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #0f3f89 0%,
+    #1e52a4 100%
+  );
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.merged-sidebar-hint {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.merged-offer-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+
+/* ========================================
+   優惠篩選
+   背景圖片保持原始比例，不使用 cover 裁切
+======================================== */
+
+.offer-filter {
+
+  position: relative;
+
+  width: 100%;
+
+  min-height: 0;
+
+  aspect-ratio: 2.5 / 1;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  background-repeat: no-repeat;
+
+  background-position: center center;
+
+  background-size: 100% 100%;
+
+  background-color: transparent;
+
+  box-shadow: none;
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+
+}
+
+.offer-filter::before {
+
+  content: none;
+
+}
+
+.offer-filter strong,
+.offer-filter small {
+
+  position: relative;
+
+  z-index: 1;
+
+  text-shadow: none;
+
+}
+
+.offer-filter strong {
+  display: block;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.1rem;
+}
+
+.offer-filter small {
+
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #5e6268;
+
+}
+
+
+/* ========================================
+   未選取狀態｜背景圖片
+======================================== */
+
+.offer-filter[data-offer-filter="all"] {
+
+  background-image: url("../images/button-1.png");
+
+}
+
+.offer-filter[data-offer-filter="limited"] {
+
+  background-image: url("../images/button-2.png");
+
+}
+
+.offer-filter[data-offer-filter="second"] {
+
+  background-image: url("../images/button-3.png");
+
+}
+
+.offer-filter[data-offer-filter="upgrade"] {
+
+  background-image: url("../images/button-4.png");
+
+}
+
+
+/* ========================================
+   主標題顏色
+======================================== */
+
+.offer-filter[data-offer-filter="all"] strong {
+
+  color: #2859a5;
+
+}
+
+.offer-filter[data-offer-filter="limited"] strong {
+
+  color: #df7827;
+
+}
+
+.offer-filter[data-offer-filter="second"] strong {
+
+  color: #4d9a55;
+
+}
+
+.offer-filter[data-offer-filter="upgrade"] strong {
+
+  color: #d84d6c;
+
+}
+
+
+/* ========================================
+   小標顏色
+======================================== */
+
+.offer-filter[data-offer-filter="all"] small {
+
+  color: #2859a5;
+
+}
+
+.offer-filter[data-offer-filter="limited"] small {
+
+  color: #c65f18;
+
+}
+
+.offer-filter[data-offer-filter="second"] small {
+
+  color: #3f8247;
+
+}
+
+.offer-filter[data-offer-filter="upgrade"] small {
+
+  color: #c13f5d;
+
+}
+
+
+/* ========================================
+   Hover
+======================================== */
+
+.offer-filter:hover {
+
+  transform: translateY(-2px);
+
+  filter: brightness(1.02);
+
+  box-shadow: none;
+
+}
+
+
+/* ========================================
+   RWD
+======================================== */
+
+@media (max-width: 1399.98px) {
+
+  .offer-filter strong {
+    font-size: 22px;
+  }
+}
+
+
+@media (max-width: 1199.98px) {
+
+  .offer-filter strong {
+    font-size: 120px;
+  }
+
+  .offer-filter small {
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 1024.98px) {
+
+  .offer-filter small {
+    font-size: 13px;
+  }
+}
+
+
+@media (max-width: 991.98px) {
+
+  .offer-filter strong {
+    font-size: 17px;
+  }
+}
+
+
+/* ========================================
+   Active：全部優惠｜藍色
+   點擊後更換 button-1-active.png
+======================================== */
+
+.offer-filter[data-offer-filter="all"].active {
+
+  z-index: 3;
+
+  transform: scale(1.03);
+
+  background-image: url("../images/button-1-2.png");
+
+  background-color: rgba(35, 74, 245, 0.13);
+
+  box-shadow:
+    0 0 0 0 rgba(37, 162, 235, 0),
+    0 3px 11px rgb(36 100 171 / 34%);
+
+  backdrop-filter: none;
+
+  -webkit-backdrop-filter: none;
+
+}
+
+
+/* ========================================
+   Active：限量促銷｜橘色
+   點擊後更換 button-2-active.png
+======================================== */
+
+.offer-filter[data-offer-filter="limited"].active {
+
+  z-index: 3;
+
+  transform: scale(1.03);
+
+  background-image: url("../images/button-2-2.png");
+
+  background-color: rgba(245, 166, 35, 0.13);
+
+  box-shadow:
+    0 0 0 0 rgba(245, 165, 35, 0),
+    0 3px 11px rgba(198, 95, 24, 0.24);
+
+  backdrop-filter: none;
+
+  -webkit-backdrop-filter: none;
+
+}
+
+
+/* ========================================
+   Active：限定團體｜綠色
+   點擊後更換 button-3-active.png
+======================================== */
+
+.offer-filter[data-offer-filter="second"].active {
+
+  z-index: 3;
+
+  transform: scale(1.03);
+
+  background-image: url("../images/button-3-2.png");
+
+  background-color: rgba(76, 175, 125, 0.13);
+
+  box-shadow:
+    0 0 0 0 rgba(76, 175, 125, 0),
+    0 3px 11px rgba(63, 130, 71, 0.23);
+
+  backdrop-filter: none;
+
+  -webkit-backdrop-filter: none;
+
+}
+
+
+/* ========================================
+   Active：好評團體｜玫瑰粉
+   點擊後更換 button-4-active.png
+======================================== */
+
+.offer-filter[data-offer-filter="upgrade"].active {
+
+  z-index: 3;
+
+  transform: scale(1.03);
+
+  background-image: url("../images/button-4-2.png");
+
+  background-color: rgba(224, 105, 135, 0.13);
+
+  box-shadow:
+    0 0 0 0 rgba(224, 105, 135, 0),
+    0 3px 11px rgba(193, 63, 93, 0.23);
+
+  backdrop-filter: none;
+
+  -webkit-backdrop-filter: none;
+
+}
+
+
+/* ========================================
+   Active 勾勾
+======================================== */
+
+.offer-filter.active::before {
+
+  content: none;
+
+}
+
+.offer-filter.active::after {
+
+  content: "✓";
+
+  position: absolute;
+
+  top: 15px;
+
+  right: 15px;
+
+  width: 24px;
+
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  pointer-events: none;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+
+}
+
+
+/* ========================================
+   全部優惠 ✓
+======================================== */
+
+.offer-filter[data-offer-filter="all"].active::after {
+
+  background: #2859a5;
+
+}
+
+
+/* ========================================
+   限量促銷 ✓
+======================================== */
+
+.offer-filter[data-offer-filter="limited"].active::after {
+
+  background: #c65f18;
+
+}
+
+
+/* ========================================
+   限定團體 ✓
+======================================== */
+
+.offer-filter[data-offer-filter="second"].active::after {
+
+  background: #3f8247;
+
+}
+
+
+/* ========================================
+   好評團體 ✓
+======================================== */
+
+.offer-filter[data-offer-filter="upgrade"].active::after {
+
+  background: #c13f5d;
+
+}
+
+
+/* ========================================
+   未選取狀態
+======================================== */
+
+.offer-filter:not(.active) {
+
+  opacity: 0.82;
+
+}
+
+.offer-filter:not(.active):hover {
+  opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+
+  .offer-filter.active::after {
+    top: 8px;
+    right: 6px;
+  }
+
+}
+
+@media (max-width: 767.98px) {
+
+  .offer-filter.active {
+
+    transform: scale(1.02);
+
+  }
+
+  .offer-filter.active::after {
+    top: 18px;
+    right: 12px;
+  }
+
+}
+
+
+@media (max-width: 575.98px) {
+  .offer-filter.active::after {
+    top: 6px;
+    right: 9px;
+  }
+
+}
+
+@media (max-width: 370.98px) {
+  .offer-filter.active::after {
+    top: 11px;
+    right: 12px;
+  }
+
+}
+
+/* ========================================
+   行程內容
+======================================== */
+
+.merged-tour-content {
+
+  min-width: 0;
+
+  flex: 1;
+
+  background: #ffffff;
+
+  padding: 24px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+
+}
+
+.merged-content-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 0 0 20px;
+
+  flex-wrap: wrap;
+}
+
+.merged-content-title h1 {
+
+  margin: 0;
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+}
+
+.merged-result-count {
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+}
+
+.merged-country-group {
+
+  margin: 0 0 35px;
+
+}
+
+.merged-country-title {
+
+  display: flex;
+
+  align-items: center;
+
+  margin: 0 0 18px;
+
+  padding: 10px 18px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #eff6ff 0%,
+      #f8fafc 100%
+    );
+
+  border-left: 5px solid #25a3eb;
+
+  border-radius: 0 8px 8px 0;
+
+}
+
+.merged-country-title h2 {
+
+  font-size: 22px;
+
+  margin: 0;
+
+  font-weight: 800;
+
+  color: #1e40af;
+
+}
+
+.merged-country-group .chosen-box {
+
+  margin-bottom: 22px;
+
+}
+
+.merged-country-group .chosen-box.is-hidden,
+.merged-country-group.is-hidden {
+
+  display: none !important;
+
+}
+
+
+/* ========================================
+   7. 頁尾 (Footer)
+======================================== */
+
+.footer-bg {
+  background-color: #042e6e;
+}
+
+.milktea-bg {
+  background-color: var(--lightblue);
+}
+
+.QR-code {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+.QR-txt {
+  display: inline-block;
+  margin-left: 8px;
+  line-height: 21px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.contact-box-warp {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 25%;
+  margin: 20px 0;
+}
+
+.contact-box:last-of-type {
+  align-items: flex-start;
+  width: 0;
+  padding-left: 5%;
+}
+
+.contact-box p span {
+  letter-spacing: 0.2rem;
+}
+
+.foot-wrap {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1.5% 0;
+  color: var(--white);
+}
+
+.footer-left {
+  width: calc(35% - 1px);
+  text-align: left;
+  margin: auto;
+}
+
+.footer-left p,
+.footer-left h4,
+.footer-left a,
+.footer-right p {
+  color: var(--white);
+}
+
+.footer-left h4 {
+  font-weight: bold;
+  font-size: 1.05rem;
+  line-height: 30px;
+}
+
+.footer-left p:nth-of-type(1) {
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+
+.footer-left .triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6.5px 0 6.5px 6px;
+  border-color:
+    transparent
+    transparent
+    transparent
+    var(--white);
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.footer-left a {
+  text-decoration: none;
+}
+
+.footer-line {
+  width: 3px;
+  min-height: 210px;
+  background: var(--white);
+  margin: 10px 2%;
+}
+
+.footer-right {
+  display: flex;
+  width: 62%;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.footer-right p {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+
+/* ========================================
+   8. 響應式媒體查詢
+======================================== */
+
+@media (min-width: 576px) {
+
+  .container,
+  .container-sm {
+    max-width: 540px;
+  }
+
+  .list-price-sm {
+    display: none;
+  }
+}
+
+
+@media (min-width: 768px) {
+
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 720px;
+  }
+
+  .itf-box-col3 {
+    width: 22%;
+  }
+
+  .itf-box-col9 {
+    width: 78%;
+  }
+
+  .itf-box-px {
+    padding: 0 0 0 15px;
+  }
+
+  .itf-box-bg {
+    padding: 20px;
+  }
+
+  .list-lg {
+    display: block;
+  }
+
+  .list-md {
+    display: none;
+  }
+
+  .ticket-dots {
+    display: none;
+  }
+
+  /*
+   * 桌機分類列固定在 NAV 下方
+   */
+  .merged-country-nav {
+    top: 56px;
+  }
+}
+
+
+@media (min-width: 992px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm {
+    max-width: 960px;
+  }
+
+  .itf-box-col3 {
+    width: 15%;
+  }
+
+  .itf-box-col9 {
+    width: 85%;
+  }
+
+  .itf-box-px {
+    padding: 0 0 0 30px;
+  }
+}
+
+
+@media (min-width: 1200px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1140px;
+  }
+
+  .itf-group {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .column-title {
+    display: flex;
+  }
+
+  #column-left {
+    display: block ;
+  }
+
+  .travel-img {
+    flex-basis: 210px;
+    width: 210px;
+    height: 125px;
+    margin-right: 22px;
+  }
+
+  .travel-content-wrap {
+    padding-bottom: 31px;
+  }
+
+  .merged-country-nav {
+    top: 56px;
+  }
+}
+
+
+@media (min-width: 1399px) {
+
+  .travel-date h3,
+  .travel-date-xl h3 {
+    color: #39779d;
+    font-size: 18px;
+    padding-right: 7px;
+  }
+
+  .travel-date p,
+  .travel-date-xl p {
+    color: #687984;
+    font-size: 18px;
+    letter-spacing: 0.3px;
+  }
+}
+
+
+@media (min-width: 1400px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1320px;
+  }
+
+  .travel-title {
+    display: -webkit-box;
+    width: 100%;
+    font: 20px 微軟正黑體, 黑體, sans-serif;
+    font-weight: 900;
+    color: #39444d;
+    letter-spacing: 0.06rem;
+    line-height: 25px;
+    text-indent: 0;
+    margin: 0 0 8px;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    box-sizing: border-box;
+  }
+
+  .nav-column ul li a {
+    font: 16px / 1.5 "Noto Sans TC", 微軟正黑體, sans-serif;
+    font-weight: 700;
+  }
+}
+
+
+@media (min-width: 1600px) {
+
+  .px-70 {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  .travel-content-wrap {
+    padding-bottom: 40px;
+  }
+
+  .itf-box-col3 {
+    width: 14%;
+  }
+}
+
+
+@media (min-width: 1900px) {
+
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl,
+  .container-3xl {
+    max-width: 1320px;
+  }
+}
+
+
+/* ========================================
+   Max-width Queries
+======================================== */
+
+@media (max-width: 1499.98px) {
+
+  .contact-box:last-of-type {
+    width: 40%;
+    padding-left: 15%;
+  }
+
+  .contact-box {
+    width: 33%;
+    margin: 0 0 10px;
+  }
+}
+
+
+@media (max-width: 1399.98px) {
+
+  #column-left h3,
+  #column-right h3 {
+    padding: 10px 15px;
+  }
+
+  .travel-date {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    text-indent: 0;
+    margin: 0;
+  }
+
+  .travel-date p {
+    width: auto;
+    text-indent: 0;
+  }
+
+  .list-price {
+    position: absolute;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    width: auto;
+    margin: 0;
+  }
+
+  .discount h4 {
+    text-indent: 0;
+    line-height: 23px;
+  }
+
+  .travel-date h3 {
+    padding-left: 0;
+  }
+}
+
+
+@media (max-width: 1200px) {
+
+  .contact-box:last-of-type {
+    display: none;
+  }
+
+  .item {
+    padding-top: 60%;
+  }
+
+  .main-pic img {
+    width: 90%;
+    margin: 0 5%;
+  }
+}
+
+
+/* ========================================
+   平板 / 手機 NAV
+======================================== */
+
+@media (max-width: 1199.98px) {
+
+  .itf-bg-2 {
+    padding: 0;
+  }
+
+  .column-title {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .column-title h1 {
+    font-size: 26px;
+  }
+
+  .nav-column ul li a {
+    font-size: 15px;
+    padding: 6px 16px;
+  }
+
+  #column-left {
+    display: none;
+    width: 100%;
+  }
+
+  #column-left.active {
+    display: block;
+  }
+
+  .list-lg {
+    display: none;
+  }
+
+  .list-md {
+    display: block;
+  }
+
+  .nav-column ul li {
+    margin: 4px 2px 0 0;
+  }
+
+  .travel-img {
+    flex: 0 0 120px;
+    width: 120px;
+    height: 78px;
+    margin-right: 12px;
+    border-radius: 8px;
+  }
+
+  .travel-title {
+    width: 100%;
+    font-size: 19px;
+    line-height: 25px;
+    padding-right: 0;
+  }
+
+  .travel-date p {
+    width: auto;
+    font-size: 15px;
+  }
+
+  .travel-date h3 {
+    font-size: 15px;
+    padding-right: 6px;
+  }
+
+  .list-price {
+    font-size: 22px;
+    line-height: 24px;
+    right: 0;
+    left: auto;
+    bottom: 0;
+  }
+
+  .list-price .list-sign {
+    font-size: 15px;
+  }
+
+  .list-price > .yuan {
+    font-size: 12px;
+  }
+
+  .discount h4 {
+    font: 15px "Noto Sans TC", sans-serif;
+    padding-top: 2px;
+    padding-right: 90px;
+    line-height: 22px;
+  }
+
+  .itf-box-col3,
+  .itf-box-col9 {
+    width: 100%;
+  }
+
+
+  /* NAV */
+
+  .menu-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 54px;
+    z-index: 9999;
+    padding: 7px 12px;
+  }
+
+  .menu-nav .logo {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .menu-nav .logo-w {
+    width: 60%;
+    max-width: 180px;
+    height: auto;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--white);
+    z-index: 1001;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+  .mobile-menu.active {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-category,
+  .mobile-category li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .mobile-main-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 20px;
+    color: var(--irongray);
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    font:
+      16px "Noto Sans TC",
+      "微軟正黑體",
+      Arial,
+      sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-main-item:hover,
+  .mobile-main-item:focus {
+    color: var(--blue2);
+    background: #f8f8f8;
+    text-decoration: none;
+  }
+
+  .mobile-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: var(--irongray);
+    font-size: 15px;
+  }
+
+  .mobile-arrow i {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 2px;
+    margin: 0;
+    background: currentColor;
+    border-radius: 2px;
+    font-size: 0;
+    transition: none;
+  }
+
+  .mobile-arrow i::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+    background: currentColor;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-has-more.active .mobile-arrow i::after {
+    opacity: 0;
+  }
+
+  .mobile-child-categories {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #f5f7f8;
+    list-style: none;
+  }
+
+  .mobile-has-more.active .mobile-child-categories {
+    display: block;
+  }
+
+  .mobile-child-categories li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-child-categories li a {
+    display: block;
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+    color: var(--gray);
+    background: #f5f7f8;
+    border-bottom: 1px solid #e8e8e8;
+    font:
+      15px "Noto Sans TC",
+      "微軟正黑體",
+      Arial,
+      sans-serif;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-child-categories li a:hover,
+  .mobile-child-categories li a:focus {
+    color: var(--blue2);
+    background: #eef7fb;
+    text-decoration: none;
+  }
+
+  .mobile-child-categories li:last-child a {
+    border-bottom: none;
+  }
+
+  /* .mobile-has-more.active .mobile-arrow i {
+    transform: rotate(45deg);
+  } */
+
+  .category-content #select-category {
+    display: none;
+  }
+
+  .merged-country-nav {
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 9998 ;
+  }
+
+  .merged-country-nav.is-sticky {
+    position: fixed ;
+    top: 54px ;
+    left: 0 ;
+    right: 0 ;
+    width: 100% ;
+    margin: 0 ;
+    border-radius: 0 ;
+    z-index: 9998 ;
+  }
+
+  .merged-country-nav-spacer.is-sticky {
+    display: block ;
+  }
+}
+
+
+/* ========================================
+   991 以下
+======================================== */
+
+@media (max-width: 991.98px) {
+
+  .itf-box-px {
+    padding: 0 10px;
+  }
+
+  .itf-box-bg {
+    padding: 15px;
+  }
+
+  .column-title h1 {
+    font-size: 28px;
+  }
+
+  .nav-column {
+    margin-bottom: 5px;
+  }
+
+  .column-title {
+    margin-bottom: 0;
+  }
+
+  .label-area p {
+    font-size: 17px;
+    padding: 2px 12px 3px;
+    margin: 8px 0;
+  }
+
+  .chosen-box li {
+    margin-bottom: 10px;
+    padding: 10px 0;
+  }
+
+  .travel-img {
+    flex: 0 0 110px;
+    width: 110px;
+    height: 72px;
+    margin-right: 10px;
+  }
+
+  .travel-content-wrap {
+    padding-bottom: 44px;
+  }
+
+  .travel-title {
+    font-size: 17px;
+    line-height: 28px;
+    padding-right: 0;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .travel-date,
+  .travel-date-xl {
+    line-height: 20px;
+    align-items: center;
+  }
+
+  .travel-date h3,
+  .travel-date-xl h3 {
+    font-size: 13px;
+    line-height: 18px;
+    padding-right: 5px;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+
+  .travel-date p,
+  .travel-date-xl p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+
+  .list-price,
+  .list-price-md {
+    position: absolute;
+    right: 0;
+    left: auto;
+    bottom: -4px;
+    font-size: 22px;
+    line-height: 22px;
+    text-align: right;
+  }
+
+  .list-price .list-sign,
+  .list-price-md .list-sign {
+    font-size: 14px;
+  }
+
+  .list-price > .yuan,
+  .list-price-md > .yuan {
+    font-size: 11px;
+  }
+
+  .discount {
+    margin-top: 2px;
+  }
+
+  .discount h4 {
+    font-size: 13px;
+    line-height: 20px;
+    padding-right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-box {
+    width: 50%;
+    margin: 0 0 10px;
+    align-items: flex-start;
+  }
+
+  .contact-box p .contact-box-title {
+    display: block;
+  }
+
+  .footer-line {
+    margin: 10px 5%;
+  }
+
+  .footer-left {
+    margin: auto;
+  }
+
+
+  /* 票券 */
+
+  .ticket-list {
+    gap: 18px;
+    padding: 40px 10px 40px;
+  }
+
+  .ticket {
+    width: calc((100% - 36px) / 3);
+    flex: 1 1 0;
+    max-width: 280px;
+    height: 205px;
+    border-radius: 17px;
+  }
+
+  .ticket-time {
+    height: 52px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .ticket-time p {
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+  .ticket-content {
+    height: calc(100% - 52px);
+    padding: 8px 8px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .ticket-subtitle {
+    height: 27px;
+    font-size: 21px;
+    font-weight: 900;
+  }
+
+  .ticket-title {
+    min-height: 47px;
+    font-size: 31px;
+    font-weight: 900;
+  }
+
+  .ticket-price {
+    font-size: 38px;
+    font-weight: 900;
+  }
+
+  .ticket::before,
+  .ticket::after {
+    width: 19px;
+    height: 19px;
+    top: 43px;
+  }
+
+  .ticket::before {
+    left: -9.5px;
+  }
+
+  .ticket::after {
+    right: -9.5px;
+  }
+
+  .merged-sidebar {
+    flex-basis: 200px;
+    width: 200px;
+  }
+
+  .merged-country-nav .country-tab {
+    padding: 9px 17px;
+  }
+
+}
+
+
+/* ========================================
+   767 以下｜手機
+======================================== */
+
+@media (max-width: 767.98px) {
+
+  nav {
+    padding: 7px 12px;
+  }
+
+  .label-pt {
+    padding: 4px 0 10px;
+  }
+
+  #column-left > div,
+  #column-right > div {
+    margin: 0 0 12px;
+  }
+
+  .column-title {
+    align-items: stretch;
+  }
+
+  .nav-column {
+    margin-left: 0;
+  }
+
+  .category-content #select-category {
+    padding: 15px 15px 8px;
+  }
+
+  .list-lg {
+    display: none;
+  }
+
+  .list-md {
+    display: block;
+  }
+
+  .itf-box-bg {
+    padding: 18px 14px;
+  }
+
+  .itf-box-px {
+    padding: 0;
+  }
+
+  .nav-column ul li {
+    margin: 3px 4px 4px 0;
+  }
+
+  .nav-column ul li a {
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+
+  /* 行程 */
+
+  .chosen-box li {
+    padding: 16px 0;
+    margin-bottom: 4px;
+  }
+
+  .chosen-box li > a {
+    display: block;
+  }
+
+  .travel-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0 0 14px;
+    border-radius: 8px;
+  }
+
+  .travel-content-wrap {
+    padding-bottom: 36px;
+  }
+
+  .travel-title {
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 23px;
+    margin-bottom: 8px;
+    padding: 0;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .travel-date,
+  .travel-date-xl {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .travel-date h3,
+  .travel-date-xl h3 {
+    flex: 0 0 auto;
+    font-size: 13px;
+    line-height: 18px;
+    padding-right: 4px;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .travel-date p,
+  .travel-date-xl p {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .list-price,
+  .list-price-md {
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: -8px;
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: right;
+    white-space: nowrap;
+    z-index: 3;
+  }
+
+  .list-price .list-sign,
+  .list-price-md .list-sign {
+    font-size: 13px;
+    margin-right: 0;
+  }
+
+  .list-price > .yuan,
+  .list-price-md > .yuan {
+    font-size: 11px;
+    margin-left: 1px;
+  }
+
+  .discount {
+    width: 100%;
+    margin-top: 10px;
+    padding: 6px 10px;
+  }
+
+  .discount h4 {
+    font-size: 13px;
+    line-height: 18px;
+    padding-right: 0;
+    margin: 0;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: clip;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  
+   /* 手機 NAV */
+
+  .menu-nav {
+    min-height: 50px;
+    padding: 6px 10px;
+  }
+
+  .menu-nav .logo {
+    height: 38px;
+  }
+
+  .menu-nav .logo-w {
+    width: 65%;
+    max-width: 170px;
+  }
+
+  .mobile-menu-toggle {
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+  }
+
+  .mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+  }
+
+  .mobile-main-item {
+    padding: 14px 15px;
+    font-size: 18px;
+  }
+
+  .mobile-child-categories li a {
+    padding: 15px 15px 15px 32px;
+    font-size: 16px;
+  }
+
+  .merged-sidebar {
+    padding: 10px;
+  }
+
+
+
+  /* ========================================
+     ★ 平板類列
+  ======================================== */
+
+  .merged-country-nav {
+    top: 50px;
+
+    gap: 6px;
+
+    padding:
+      7px 8px 9px;
+
+    margin-bottom: 12px;
+  }
+
+  .merged-country-nav .country-tab {
+    font-size: 13px;
+
+    padding:
+      7px 14px;
+
+    min-height: 38px;
+  }
+
+   .mobile-menu-toggle {
+    display: none ;
+  }
+
+
+  .mobile-menu-toggle {
+    display: block;
+    margin: 0 0 15px;
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 22px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-menu-toggle i {
+    margin-right: 8px;
+  }
+
+  .mobile-menu-toggle.active {
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+  }
+
+  .merged-offer-filters {
+    padding: 0 5px 10px;
+  }
+
+  /* 國家分類功能移到 NAV 漢堡選單 */
+  .merged-country-nav,
+  .merged-country-nav-spacer {
+    display: none !important;
+  }
+  
+
+  /* Footer */
+
+  footer {
+    font-size: 12px;
+  }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-left p {
+    font-size: 14px !important;
+  }
+
+  .footer-left a {
+    font-size: 9px;
+  }
+
+  .footer-left p:nth-of-type(1) {
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+
+  .contact-box-warp {
+    align-items: start;
+  }
+
+  .contact-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 10px 0;
+  }
+
+  .contact-box p span {
+    letter-spacing: 0.15rem;
+  }
+
+  .contact-box p {
+    margin-bottom: 2px;
+  }
+
+
+  /* ========================================
+     手機票券
+  ======================================== */
+
+  .ticket-list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+    padding: 22px 10px 16px;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  .ticket-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ticket {
+    width: calc((100vw - 36px) / 2);
+    max-width: calc((100vw - 36px) / 2);
+    flex: 0 0 calc((100vw - 36px) / 2);
+    height: 160px;
+    border-radius: 14px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .ticket-time {
+    height: 42px;
+    border-radius: 13px 13px 0 0;
+  }
+
+  .ticket-time p {
+    font-size: 20px;
+    letter-spacing: 0.04rem;
+    font-weight: 700;
+  }
+
+  .ticket-content {
+    height: calc(100% - 42px);
+    padding: 5px;
+    border-radius: 0 0 13px 13px;
+  }
+
+  .ticket-subtitle {
+    height: 21px;
+    margin-bottom: 2px;
+    font-size: 18px;
+  }
+
+  .ticket-title {
+    min-height: 39px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.05;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .ticket-price {
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .ticket::before,
+  .ticket::after {
+    width: 14px;
+    height: 14px;
+    top: 35px;
+  }
+
+  .ticket::before {
+    left: -7px;
+  }
+
+  .ticket::after {
+    right: -7px;
+  }
+
+  .ticket-clock,
+  .time-icon {
+    margin-right: 5px;
+    font-size: 18px;
+  }
+
+  .time-icon {
+    width: 13%;
+    margin-right: 6px;
+  }
+
+  .time-icon2 {
+    width: 17%;
+    margin-right: 4px;
+  }
+
+  .time-icon3 {
+    width: 15%;
+    margin-right: 6px;
+  }
+
+
+  /* ========================================
+     手機票券圓點
+  ======================================== */
+
+  .ticket-dots {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0 15px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  .ticket-dot {
+    display: block;
+    width: 8px;
+    min-width: 8px;
+    max-width: 8px;
+    height: 8px;
+    min-height: 8px;
+    max-height: 8px;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    background: #cfd6dc;
+    border: 1px solid #c4ccd4;
+    box-sizing: border-box;
+    flex: 0 0 8px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .ticket-dot.active {
+    width: 10px;
+    min-width: 10px;
+    max-width: 10px;
+    height: 10px;
+    min-height: 10px;
+    max-height: 10px;
+    background:
+      linear-gradient(
+        90deg,
+        var(--promo-orange),
+        var(--promo-red)
+      );
+    border: 2px solid #ffffff;
+    box-shadow:
+      0 2px 6px var(--btn-shadow-orange);
+    flex: 0 0 10px;
+  }
+
+
+  /* ========================================
+     ★ 手機國家分類列
+     ★ NAV 高度約 50px
+  ======================================== */
+
+  .merged-itf-container {
+    padding-top: 12px;
+    padding-bottom: 35px;
+  }
+
+  .merged-country-nav {
+    position: sticky;
+
+    /*
+     * 手機 NAV 約 50px
+     */
+    top: 50px;
+
+    z-index: 9998;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    gap: 8px;
+
+    width: 100%;
+
+    padding:
+      8px 10px 10px;
+
+    margin:
+      0 0 15px;
+
+    background:
+      rgba(255, 255, 255, 0.98);
+
+    border:
+      1px solid #dcecf5;
+
+    border-radius:
+      0 0 12px 12px;
+
+    box-shadow:
+      0 4px 14px rgba(15, 63, 137, 0.14);
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .merged-country-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .merged-country-nav .country-tab {
+    flex: 0 0 auto;
+
+    font-size: 14px;
+
+    padding:
+      8px 18px;
+
+    min-height: 40px;
+
+    border-radius: 22px;
+  }
+
+
+  /* ========================================
+     手機內容
+  ======================================== */
+
+  .merged-content-row {
+    display: block;
+  }
+
+  .merged-sidebar {
+    position: static;
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-bottom: 18px;
+  }
+
+  .merged-sidebar h3 {
+    font-size: 21px;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    padding: 10px 16px;
+  }
+
+  .merged-sidebar-hint {
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 0.05rem;
+  }
+
+  .merged-offer-filters {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 8px;
+  }
+
+  .offer-filter {
+    padding: 0;
+    text-align: center;
+    min-height: 0;
+    aspect-ratio: 2.5 / 1;
+    background-size: 100% 100%;
+  }
+
+  .offer-filter strong {
+    font-size: 20px;
+  }
+
+  .offer-filter small {
+    font-size: 16px;
+  }
+
+  .offer-filter::after {
+    display: none;
+  }
+
+  .merged-content-title h1 {
+    font-size: 24px;
+  }
+
+  .merged-result-count {
+    font-size: 15px;
+  }
+
+  .merged-country-title h2 {
+    font-size: 20px;
+  }
+}
+
+
+/* ========================================
+   575 以下
+======================================== */
+
+@media (max-width: 575.98px) {
+
+  nav {
+    padding: 7px 12px;
+  }
+
+  .itf-title {
+    width: 83%;
+  }
+
+  .itf-slide-caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .itf-bg-2 {
+    padding: 12px;
+  }
+
+  .nav-column {
+    padding-top: 4px;
+  }
+
+  .column-title {
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+  }
+
+  .column-title h1 {
+    font:
+      30px 微軟正黑體,
+      黑體,
+      sans-serif;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .label-area p {
+    font-size: 20px;
+    padding: 4px 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+  }
+
+  .tour-brand {
+    font-size: 13px;
+  }
+
+  .travel-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    padding-right: 0;
+  }
+
+  .nav-column ul li a {
+    font:
+      14px 微軟正黑體,
+      黑體,
+      sans-serif;
+    padding: 6px 12px;
+  }
+
+  .nav-column ul {
+    gap: 8px 4px;
+  }
+
+
+  .chosen-box li {
+    padding: 5px 0 30px;
+    margin-bottom: 4px;
+  }
+
+  .travel-img {
+    flex: 0 0 100%;
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 6px;
+  }
+
+  .travel-date {
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+  }
+
+  .travel-date h3 {
+    font-size: 13px;
+    line-height: 18px;
+    padding-right: 4px;
+  }
+
+  .travel-date p {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .list-price,
+  .list-price-md {
+    left: auto;
+    right: 0;
+    bottom: -28px;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: right;
+    box-sizing: border-box;
+    padding-top: 6px;
+    padding-bottom: 3px;
+  }
+
+  .list-price .list-sign,
+  .list-price-md .list-sign {
+    font-size: 13px;
+  }
+
+  .list-price > .yuan,
+  .list-price-md > .yuan {
+    font-size: 12px;
+  }
+
+  .discount {
+    margin: 10px 0 15px;
+    padding: 6px 10px;
+  }
+
+  .discount h4 {
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 0;
+    padding-right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .merged-content-title {
+    margin: 0 ;
+  }
+
+  .merged-country-group .chosen-box {
+    margin-bottom: 0;
+  } 
+
+  .merged-offer-filters {
+    padding: 0 5px;
+  }
+
+  .offer-filter strong {
+    font-size: 16px;
+  }
+
+  .offer-filter small {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 540px) { 
+  .offer-filter strong {
+    font-size: 24px;
+  }
+
+  .offer-filter small {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 520px) { 
+  .offer-filter strong {
+    font-size: 16px;
+  }
+
+  .offer-filter small {
+    font-size: 14px;
+  }
+}
+
+
+
+/* ========================================
+   500 以下
+======================================== */
+
+@media (max-width: 500px) {
+
+  .foot-wrap {
+    width: 88%;
+    flex-direction: column;
+    padding: 10% 0 5%;
+  }
+
+  .footer-line {
+    display: none;
+  }
+
+  .footer-left {
+    text-align: center;
+  }
+
+  .footer-right {
+    margin: 10px 0;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer-left p:nth-of-type(1) {
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+}
+
+/* ========================================
+   430 以下
+======================================== */
+
+@media (max-width: 430px) {
+  .merged-tour-content {
+    padding: 24px 30px;
+  }
+}
+
+/* ========================================
+   380 以下
+======================================== */
+
+@media (max-width: 380px) {
+
+  .ticket-list {
+    gap: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ticket {
+    width: calc((100vw - 42px) / 2);
+    min-width: calc((100vw - 42px) / 2);
+    flex-basis: calc((100vw - 42px) / 2);
+  }
+
+  .merged-tour-content {
+    padding: 24px ;
+  }
+}
+
+
+@media (max-width: 379.98px) {
+
+  .offer-filter small {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 370.98px) {
+
+  .column-title {
+    flex-wrap: wrap;
+  }
+
+  .nav-column ul li a {
+    font:
+      13px 微軟正黑體,
+      黑體,
+      sans-serif;
+    padding: 5px 10px;
+  }
+
+  .merged-country-nav {
+    top: 50px;
+  }
+
+  .offer-filter small {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
+  .offer-filter strong {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 350.98px) {
+  .merged-offer-filters {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 50px 10px;
+  }
+
+  .offer-filter strong {
+    font-size: 20px;
+  } 
+
+  .offer-filter small {
+    font-size: 16px;
+  }
+
+  
+}
+
+@media (max-width: 320.98px) {
+  .merged-offer-filters {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 0 10px;
+  }
+
+}
