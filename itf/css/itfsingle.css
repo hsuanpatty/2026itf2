@@ -1642,8 +1642,8 @@ nav {
 .offer-filter strong {
   display: block;
   margin: 0;
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.1rem;
 }
@@ -1782,11 +1782,11 @@ nav {
 @media (max-width: 1199.98px) {
 
   .offer-filter strong {
-    font-size: 120px;
+    font-size: 20px;
   }
 
   .offer-filter small {
-    font-size: 14px;
+    font-size: 16px;
   }
 
 }
@@ -2407,6 +2407,10 @@ nav {
 
   .merged-country-nav {
     top: 56px;
+  }
+
+  .offer-filter small {
+    letter-spacing: 0.05rem;
   }
 }
 
