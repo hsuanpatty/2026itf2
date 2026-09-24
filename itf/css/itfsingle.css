@@ -3089,6 +3089,7 @@ nav {
    767 以下｜手機
 ======================================== */
 
+
 @media (max-width: 767.98px) {
 
   nav {
@@ -3141,7 +3142,9 @@ nav {
     padding: 6px 14px;
   }
 
-  /* 行程 */
+  /* ========================================
+     行程
+  ======================================== */
 
   .chosen-box li {
     padding: 16px 0;
@@ -3264,8 +3267,9 @@ nav {
     line-clamp: 2;
   }
 
-  
-   /* 手機 NAV */
+  /* ========================================
+     手機 NAV
+  ======================================== */
 
   .menu-nav {
     min-height: 50px;
@@ -3307,7 +3311,79 @@ nav {
     padding: 10px;
   }
 
+  /* ========================================
+     ★ 手機版國家分類 Active
+     ★ 明確顯示目前選取的國家
+  ======================================== */
 
+  .mobile-child-categories li {
+    position: relative;
+  }
+
+  .mobile-child-categories li a.mobile-country-filter {
+    position: relative;
+    display: block;
+
+    padding:
+      15px 42px 15px 32px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    color: #3f3a37;
+    background: #ffffff;
+
+    border-left: 4px solid transparent;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* ----------------------------------------
+     手機國家分類 Hover
+  ---------------------------------------- */
+
+  .mobile-child-categories li a.mobile-country-filter:hover {
+    background: #eef6ff;
+    color: #0f3f89;
+  }
+
+  /* ----------------------------------------
+     ★ 目前選取的國家
+  ---------------------------------------- */
+
+  .mobile-child-categories li a.mobile-country-filter.active {
+        background: linear-gradient(135deg, #25a3eb 0%, #5076df 100%);
+    color: #ffffff;
+
+    font-weight: 700;
+
+    border-left-color: #fdf9ef;
+
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  /* ----------------------------------------
+     ★ Active 左側明顯色條
+  ---------------------------------------- */
+
+  .mobile-child-categories li a.mobile-country-filter.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -4px;
+    top: 0;
+    bottom: 0;
+
+    width: 4px;
+
+    background: #ffeec6;
+  }
 
   /* ========================================
      ★ 平板類列
@@ -3333,10 +3409,9 @@ nav {
     min-height: 38px;
   }
 
-   .mobile-menu-toggle {
-    display: none ;
+  .mobile-menu-toggle {
+    display: none;
   }
-
 
   .mobile-menu-toggle {
     display: block;
@@ -3365,14 +3440,18 @@ nav {
     padding: 0 5px 10px;
   }
 
-  /* 國家分類功能移到 NAV 漢堡選單 */
+  /* ========================================
+     國家分類功能移到 NAV 漢堡選單
+  ======================================== */
+
   .merged-country-nav,
   .merged-country-nav-spacer {
     display: none !important;
   }
-  
 
-  /* Footer */
+  /* ========================================
+     Footer
+  ======================================== */
 
   footer {
     font-size: 12px;
@@ -3415,7 +3494,6 @@ nav {
   .contact-box p {
     margin-bottom: 2px;
   }
-
 
   /* ========================================
      手機票券
@@ -3526,7 +3604,6 @@ nav {
     margin-right: 6px;
   }
 
-
   /* ========================================
      手機票券圓點
   ======================================== */
@@ -3580,7 +3657,6 @@ nav {
       0 2px 6px var(--btn-shadow-orange);
     flex: 0 0 10px;
   }
-
 
   /* ========================================
      ★ 手機國家分類列
@@ -3654,7 +3730,6 @@ nav {
     border-radius: 22px;
   }
 
-
   /* ========================================
      手機內容
   ======================================== */
@@ -3726,7 +3801,9 @@ nav {
   .merged-country-title h2 {
     font-size: 20px;
   }
+
 }
+
 
 
 /* ========================================
