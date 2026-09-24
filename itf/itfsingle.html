@@ -48,32 +48,37 @@
       <!-- 手機版選單 -->
       <div class="mobile-menu">
         <ul class="list-unstyled mobile-category">
-          <li class="mobile-has-more">
+          <li class="mobile-has-more open active">
             <a class="mobile-main-item" href="#">
               巨匠線上旅展 全覽
               <span class="mobile-arrow">
-                <i class="fa fa-plus"></i>
+                <i class="fa fa-minus"></i>
               </span>
             </a>
 
             <ul class="list-unstyled mobile-child-categories">
               <li>
-                <a href="#" class="mobile-country-filter" data-country-filter="all">全部國家</a>
+                <a href="#" class="mobile-country-filter active" data-country-filter="all" aria-current="page"> 全部國家 </a>
               </li>
+
               <li>
-                <a href="#" class="mobile-country-filter" data-country-filter="eu">歐洲</a>
+                <a href="#" class="mobile-country-filter" data-country-filter="eu" aria-current="false"> 歐洲 </a>
               </li>
+
               <li>
-                <a href="#" class="mobile-country-filter" data-country-filter="me">古文明．土耳其</a>
+                <a href="#" class="mobile-country-filter" data-country-filter="me" aria-current="false"> 古文明．土耳其 </a>
               </li>
+
               <li>
-                <a href="#" class="mobile-country-filter" data-country-filter="nzau">紐西蘭．澳洲</a>
+                <a href="#" class="mobile-country-filter" data-country-filter="nzau" aria-current="false"> 紐西蘭．澳洲 </a>
               </li>
+
               <li>
-                <a href="#" class="mobile-country-filter" data-country-filter="ntc">南亞</a>
+                <a href="#" class="mobile-country-filter" data-country-filter="ntc" aria-current="false"> 南亞 </a>
               </li>
+
               <li>
-                <a href="#" class="mobile-country-filter" data-country-filter="jp">日本</a>
+                <a href="#" class="mobile-country-filter" data-country-filter="jp" aria-current="false"> 日本 </a>
               </li>
             </ul>
           </li>
@@ -1255,41 +1260,28 @@
                 /*
                  * ★ 唯一分類依據
                  *
-                 * HTML：
-                 *
-                 * data-offer-type="limited"
-                 * data-offer-type="second"
-                 * data-offer-type="upgrade"
-                 *
-                 * 完全不看：
-                 * - 行程名稱
-                 * - discount 文字
-                 * - h4
-                 * - 價格
+                 * data-offer-type：
+                 * limited
+                 * second
+                 * upgrade
                  */
                 var offerType = $.trim($item.attr("data-offer-type") || "");
 
-                /*
-                 * 優惠類型是否符合
-                 */
+                /* ----------------------------------------
+               優惠類型是否符合
+            ---------------------------------------- */
                 var offerMatch = currentOffer === "all" || offerType === currentOffer;
 
-                /*
-                 * 國家是否符合
-                 *
-                 * 正常情況下 li 沒有 data-country
-                 * 就跟著外層 merged-country-group。
-                 *
-                 * 如果 li 自己有 data-country，
-                 * 則再確認一次。
-                 */
+                /* ----------------------------------------
+               行程自己的國家
+            ---------------------------------------- */
                 var itemCountry = $.trim($item.attr("data-country") || "");
 
                 var itemCountryMatch = currentCountry === "all" || itemCountry === "" || itemCountry === currentCountry;
 
-                /*
-                 * 最終顯示條件
-                 */
+                /* ----------------------------------------
+               最終顯示條件
+            ---------------------------------------- */
                 var shouldShow = offerMatch && itemCountryMatch;
 
                 /* ----------------------------------------
@@ -1348,35 +1340,68 @@
          儲存目前狀態
       ======================================== */
           window.__mergedCurrentCountry = currentCountry;
+
           window.__mergedCurrentOffer = currentOffer;
         }
 
         /* ========================================
        切換國家頁籤 Active 狀態
+       
+       ★ 電腦版 + 手機版同步
     ======================================== */
         function setCountryActive(country) {
-          $(".country-tab, .mobile-country-filter").removeClass("active");
+          /*
+           * ----------------------------------------
+           * 先清除所有國家 Active
+           * ----------------------------------------
+           */
+          $(".country-tab").removeClass("active").attr("aria-selected", "false");
 
-          $(".country-tab").attr("aria-selected", "false");
+          $(".mobile-country-filter").removeClass("active");
 
           /*
-           * 桌機 / 一般按鈕
+           * ----------------------------------------
+           * 電腦版國家按鈕
+           * ----------------------------------------
            */
           $('.country-tab[data-country-filter="' + country + '"], ' + '.country-tab[data-country="' + country + '"]')
             .addClass("active")
             .attr("aria-selected", "true");
 
           /*
-           * 手機分類
+           * ----------------------------------------
+           * ★ 手機版國家按鈕
+           *
+           * 只會有一個 active
+           * ----------------------------------------
            */
           $('.mobile-country-filter[data-country-filter="' + country + '"], ' + '.mobile-country-filter[data-country="' + country + '"]').addClass("active");
 
           /*
-           * select
+           * ----------------------------------------
+           * 如果手機版是 select
+           * ----------------------------------------
            */
           if ($("select.mobile-country-filter").length) {
             $("select.mobile-country-filter").val(country);
           }
+
+          /*
+           * ----------------------------------------
+           * ★ 將目前選取國家寫入 DOM
+           *
+           * 讓 CSS 可以使用：
+           *
+           * .mobile-country-filter.active
+           *
+           * ----------------------------------------
+           */
+          $(".mobile-country-filter").attr("aria-current", "false");
+
+          $('.mobile-country-filter[data-country-filter="' + country + '"], ' + '.mobile-country-filter[data-country="' + country + '"]').attr(
+            "aria-current",
+            "page",
+          );
         }
 
         /* ========================================
@@ -1391,19 +1416,16 @@
             return;
           }
 
+          /* ----------------------------------------
+           更新目前國家
+        ---------------------------------------- */
           currentCountry = country;
 
           window.__mergedCurrentCountry = currentCountry;
 
           /*
-           * 不重置 currentOffer
-           *
-           * 例如：
-           * 限定團體 + 歐洲
-           *
-           * 再點日本
-           *
-           * 仍然維持「限定團體」
+           * ★ 先更新 Active
+           * 再更新篩選
            */
           setCountryActive(country);
 
@@ -1421,7 +1443,7 @@
            * 定位旅展精選行程標題
            *
            * 其他國家
-           * 也沿用原本定位邏輯
+           * 沿用原本定位邏輯
            */
           var $targetElement = $mainTitle.length ? $mainTitle : $targetGroup;
 
@@ -1435,7 +1457,7 @@
 
               /*
                * 預留空間
-               * 避免旅展精選行程被固定選單遮住
+               * 避免旅展精選行程被選單遮住
                */
               var extraPadding = 70;
 
@@ -1453,9 +1475,16 @@
           }
 
           /* ----------------------------------------
-           手機版自動關閉抽屜
+           ★ 手機版
+           點選後關閉抽屜
+           
+           但 Active 不會消失
         ---------------------------------------- */
           if ($(this).hasClass("mobile-country-filter") || $(this).closest(".mobile-menu").length) {
+            /*
+             * Active 已經在上面設定完成
+             * 這裡只負責關閉抽屜
+             */
             $("body").removeClass("mobile-menu-open");
 
             $(".mobile-menu").removeClass("open active");
@@ -1531,6 +1560,7 @@
     ======================================== */
         function initMergedFilters() {
           currentCountry = "all";
+
           currentOffer = "all";
 
           window.__mergedCurrentCountry = "all";
@@ -1538,7 +1568,8 @@
           window.__mergedCurrentOffer = "all";
 
           /*
-           * 國家 Active
+           * ★ 電腦 + 手機
+           * 預設「全部國家」Active
            */
           setCountryActive("all");
 
@@ -1555,9 +1586,9 @@
           updateMergedFilters();
         }
 
-        /*
-         * DOM Ready
-         */
+        /* ========================================
+       DOM Ready
+    ======================================== */
         $(function () {
           initMergedFilters();
         });
@@ -1766,11 +1797,26 @@
           });
 
           if (currentGroup) {
+            /*
+             * 桌機 Active
+             */
             $(".country-tab").removeClass("active").attr("aria-selected", "false");
 
             $('.country-tab[data-country-filter="' + currentGroup + '"], ' + '.country-tab[data-country="' + currentGroup + '"]')
               .addClass("active")
               .attr("aria-selected", "true");
+
+            /*
+             * ★ 手機 Active 同步
+             *
+             * Scroll Spy 發現目前位於哪個國家
+             * 手機選單也同步顯示該國家
+             */
+            $(".mobile-country-filter").removeClass("active").attr("aria-current", "false");
+
+            $('.mobile-country-filter[data-country-filter="' + currentGroup + '"], ' + '.mobile-country-filter[data-country="' + currentGroup + '"]')
+              .addClass("active")
+              .attr("aria-current", "page");
           }
         }
 
@@ -1783,11 +1829,23 @@
         $(window).on("load", function () {
           setTimeout(function () {
             if (window.__mergedCurrentCountry === "all") {
+              /*
+               * 桌機
+               */
               $(".country-tab").removeClass("active").attr("aria-selected", "false");
 
               $('.country-tab[data-country-filter="all"], ' + '.country-tab[data-country="all"]')
                 .addClass("active")
                 .attr("aria-selected", "true");
+
+              /*
+               * ★ 手機
+               */
+              $(".mobile-country-filter").removeClass("active").attr("aria-current", "false");
+
+              $('.mobile-country-filter[data-country-filter="all"], ' + '.mobile-country-filter[data-country="all"]')
+                .addClass("active")
+                .attr("aria-current", "page");
             }
 
             updateScrollSpy();
