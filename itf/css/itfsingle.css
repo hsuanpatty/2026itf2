@@ -902,20 +902,31 @@ nav {
 }
 
 .travel-title {
-  display: -webkit-box;
+  display: block;
   width: 100%;
-  font: 18px 微軟正黑體, 黑體, sans-serif;
+
+  font:
+    18px
+    微軟正黑體,
+    黑體,
+    sans-serif;
+
   font-weight: 900;
-  color: #39444d;
-  letter-spacing: 0.06rem;
-  line-height: 25px;
+
+  color: #3f4347;
+
+  letter-spacing: 0.1rem;
+  line-height: 24px;
   text-indent: 0;
-  margin: 0 0 8px;
-  padding: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0 0 10px;
+  padding: 0 105px 0 0;
+
+  /* ★ 長行程名稱最多顯示兩行 */
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  overflow: hidden;
+
   box-sizing: border-box;
 }
 
@@ -1009,7 +1020,7 @@ nav {
 .list-price > .yuan,
 .list-price-md > .yuan {
   font: 14px "Noto Sans TC", sans-serif;
-  color: #78838a;
+  color: #35393b;
   font-weight: 700;
   margin-left: 3px;
 }
@@ -2652,7 +2663,7 @@ nav {
     line-height: 24px;
     right: 0;
     left: auto;
-    bottom: 0;
+    bottom: -2px;
   }
 
   .list-price .list-sign {
@@ -2876,6 +2887,10 @@ nav {
   .merged-country-nav-spacer.is-sticky {
     display: block ;
   }
+
+  .discount {
+    padding: 4px 16px;
+  }
 }
 
 
@@ -2966,7 +2981,7 @@ nav {
     position: absolute;
     right: 0;
     left: auto;
-    bottom: -4px;
+    bottom: -2px;
     font-size: 22px;
     line-height: 22px;
     text-align: right;
