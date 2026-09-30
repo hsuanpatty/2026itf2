@@ -1636,13 +1636,9 @@ nav {
 
 .offer-filter strong,
 .offer-filter small {
-
   position: relative;
-
   z-index: 1;
-
   text-shadow: none;
-
 }
 
 .offer-filter strong {
@@ -1655,17 +1651,11 @@ nav {
 }
 
 .offer-filter small {
-
   display: block;
-
   margin-top: 4px;
-
   font-size: 16px;
-
   font-weight: 600;
-
   line-height: 1.4;
-
   color: #5e6268;
 
 }
@@ -2416,7 +2406,7 @@ nav {
   }
 
   .offer-filter small {
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.02rem;
   }
 }
 
